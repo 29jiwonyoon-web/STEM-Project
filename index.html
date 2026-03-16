@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,75 +16,83 @@
 <body>
 
 <nav class="navbar">
-<h1 class="logo">Jiwon</h1>
+
+<h1 class="logo">JIWON</h1>
 
 <ul class="nav-links">
 <li><a href="#about">About</a></li>
 <li><a href="#career">Career</a></li>
 <li><a href="#resources">Resources</a></li>
 <li><a href="#games">Mini Games</a></li>
+<li><a href="#contact">Contact</a></li>
 </ul>
+
 </nav>
 
 <header class="hero">
 
-<div class="hero-text">
-<h2>Hello, I'm Jiwon</h2>
-<p>Student | Web Developer | History & Politics Enthusiast</p>
+<div class="profile-container">
+
+<img src="profile.png" class="profile-img">
+
 </div>
 
-<div class="hero-images">
-<img src="photo1.jpg" alt="photo">
-<img src="photo2.jpg" alt="photo">
-</div>
+<h2>Hello, I'm Jiwon</h2>
+
+<p class="intro">
+A 4.0 GPA versatile student who puts maximum effort into everything I pursue.
+I am passionate about technology, engineering, mathematics, politics, and global affairs.
+I actively build web applications and continuously challenge myself academically,
+athletically, and intellectually.
+</p>
 
 </header>
 
-<section id="about" class="section">
+
+<section id="about" class="section card">
 
 <h2>About Me</h2>
 
 <p>
-My name is Jiwon. I am a student interested in technology, engineering,
-mathematics, politics, and history.
+I am a highly motivated student with a 4.0 GPA known for being adaptable,
+disciplined, and curious across many fields. My interests range from
+software engineering and web development to history, geopolitics,
+and mathematics.
 </p>
 
 <p>
-I enjoy building web applications using HTML, CSS, and JavaScript while also
-studying international relations and participating in Model United Nations
-conferences.
-</p>
-
-<p>
-Outside academics, I train in fitness, practice languages such as French
-and Spanish, and explore strategy, history, and problem solving.
+Through academic research, programming projects, Model United Nations,
+and personal development, I aim to continuously improve my abilities
+and contribute meaningful solutions to real-world problems.
 </p>
 
 </section>
 
-<section id="career" class="section">
 
-<h2>Career</h2>
+
+<section id="career" class="section card">
+
+<h2>Career Interests</h2>
 
 <ul>
 
-<li>Web App Development</li>
+<li>Software & Web Application Development</li>
 
-<li>Engineering and technology research</li>
+<li>Engineering and Technical Innovation</li>
 
-<li>International relations and diplomacy</li>
+<li>International Relations and Diplomacy</li>
 
-<li>Game and educational tool development</li>
+<li>Educational Technology and Learning Tools</li>
 
 </ul>
 
 </section>
 
-<section id="resources" class="section">
+
+
+<section id="resources" class="section card">
 
 <h2>Upload Resources</h2>
-
-<p>Upload study materials or documents.</p>
 
 <input type="file" id="fileUpload">
 
@@ -94,17 +102,31 @@ and Spanish, and explore strategy, history, and problem solving.
 
 </section>
 
-<section id="games" class="section">
 
-<h2>Mini Games</h2>
 
-<p>Play simple browser games.</p>
+<section id="games" class="section card">
 
-<button onclick="launchGame()">Start Guess Game</button>
+<h2>Mini Game</h2>
+
+<button onclick="startGame()">Play Guess Game</button>
 
 <p id="gameOutput"></p>
 
 </section>
+
+
+
+<section id="contact" class="section card">
+
+<h2>Professional Inquiries</h2>
+
+<p>Email for collaborations, academic inquiries, or projects:</p>
+
+<p class="email">29jiwon.yoon@cats-fc.org</p>
+
+</section>
+
+
 
 <footer>
 
