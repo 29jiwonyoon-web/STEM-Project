@@ -1,42 +1,195 @@
-function uploadFile(){
-
-let fileInput=document.getElementById("fileUpload");
-let status=document.getElementById("uploadStatus");
-
-if(fileInput.files.length===0){
-
-status.innerText="Please select a file.";
-
+:root {
+    --bg: #050505;
+    --text: #ffffff;
+    --accent: #bc13fe; /* Electric Purple */
+    --secondary: #00f2ff; /* Cyber Cyan */
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
 }
 
-else{
-
-status.innerText="Resource uploaded locally (demo only).";
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', sans-serif;
+    scroll-behavior: smooth;
 }
 
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
 }
 
-
-
-function startGame(){
-
-let number=Math.floor(Math.random()*5)+1;
-
-let guess=prompt("Guess a number between 1 and 5");
-
-let output=document.getElementById("gameOutput");
-
-if(parseInt(guess)===number){
-
-output.innerText="Correct!";
-
+/* --- Visual Effects --- */
+.cursor-glow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(188, 19, 254, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    transition: transform 0.1s ease-out;
 }
 
-else{
-
-output.innerText="Wrong. The number was "+number;
-
+.gradient-text {
+    background: linear-gradient(90deg, var(--accent), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
 }
 
+/* --- Navigation --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 10%;
+    position: fixed;
+    width: 100%;
+    backdrop-filter: blur(15px);
+    z-index: 100;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.logo { font-weight: 700; font-size: 1.2rem; }
+.logo span { color: var(--accent); }
+
+.nav-links { display: flex; list-style: none; gap: 2.5rem; }
+.nav-links a { text-decoration: none; color: var(--text); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+.nav-links a:hover { color: var(--secondary); text-shadow: 0 0 10px var(--secondary); }
+
+/* --- Hero Section --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.profile-container {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 2rem;
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--secondary);
+    position: relative;
+    z-index: 2;
+    animation: float 5s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.4));
+}
+
+.profile-container::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 240px; height: 240px;
+    background: var(--accent);
+    filter: blur(60px);
+    opacity: 0.2;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.hero h1 { font-size: 4rem; margin-bottom: 10px; }
+.subtitle { font-size: 1.2rem; opacity: 0.8; letter-spacing: 2px; margin-bottom: 2rem; }
+
+.hero-tags span {
+    border: 1px solid var(--glass-border);
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    margin: 5px;
+    font-size: 0.75rem;
+    background: var(--glass);
+    display: inline-block;
+}
+
+/* --- Content Sections --- */
+.section { padding: 80px 10%; position: relative; z-index: 5; }
+.section-title { font-size: 2.5rem; margin-bottom: 3rem; text-align: center; }
+
+.glass-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    padding: 3rem;
+    border-radius: 30px;
+    backdrop-filter: blur(20px);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.interest-card {
+    background: var(--glass);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.interest-card h3 { color: var(--secondary); margin-bottom: 10px; }
+.interest-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    border-color: var(--accent);
+    box-shadow: 0 20px 40px rgba(188, 19, 254, 0.1);
+}
+
+.cta-button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 1px solid var(--secondary);
+    color: var(--secondary);
+    text-decoration: none;
+    border-radius: 50px;
+    transition: 0.3s;
+    font-weight: 700;
+}
+
+.cta-button:hover {
+    background: var(--secondary);
+    color: #000;
+    box-shadow: 0 0 20px var(--secondary);
+}
+
+/* --- Animations --- */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease-out;
+}
+
+.scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+footer {
+    text-align: center;
+    padding: 4rem 0;
+    opacity: 0.5;
+    font-size: 0.8rem;
 }
